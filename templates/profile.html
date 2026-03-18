@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warrior Profile | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/profile_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="profile-tablet fade-in">
+        <a href="/dashboard" class="back-link">← Return to Camp</a>
+
+        <header class="profile-header">
+            <div class="avatar-circle">
+                <span class="initial">{{initialletter}}</span> </div>
+            <h1 class="username">{{session.username}}</h1>
+            <div class="rank-badge">
+                <span class="emoji">🛡️</span> RANK: <span class="gold-text">{{session.rank}}</span> 
+            </div>
+        </header>
+
+        <section class="pakkoda-score-section">
+            <div class="score-card">
+                <p class="score-label">PAKKODA GLORY <span class="emoji">🥟</span></p>
+                <h2 class="pakkoda-points">{{session.pakkodaglory}}</h2>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <div class="stats-grid">
+            <div class="subject-card physics">
+                <span class="emoji">⚛️</span>
+                <h3>Physics</h3>
+                <p class="glory-count">{{session.physicsglory}}<span class="label">Glory</span></p>
+                <div class="progress-bar"><div class="fill" style="width: 85%;"></div></div>
+            </div>
+
+            <div class="subject-card chemistry">
+                <span class="emoji">🧪</span>
+                <h3>Chemistry</h3>
+                <p class="glory-count">{{session.chemistryglory}}<span class="label">Glory</span></p>
+                <div class="progress-bar"><div class="fill" style="width: 70%;"></div></div>
+            </div>
+
+            <div class="subject-card math">
+                <span class="emoji">📐</span>
+                <h3>Mathematics</h3>
+                <p class="glory-count">{{session.mathsglory}}<span class="label">Glory</span></p>
+                <div class="progress-bar"><div class="fill" style="width: 92%;"></div></div>
+            </div>
+        </div>
+
+     <section class="visualization">
+    <h3>Warrior PowerHouse(Subject Glory)</h3>
+    <div class="bar-chart-container">
+        <div class="bar-wrapper">
+            <div class="bar physics" style="height: {{ (session.physicsglory / 2000) * 100 }}%;">
+                <span class="glory-val">{{ session.physicsglory }}</span>
+            </div>
+            <p>Physics</p>
+        </div>
+
+        <div class="bar-wrapper">
+            <div class="bar chemistry" style="height: {{ (session.chemistryglory / 2000) * 100 }}%;">
+                <span class="glory-val">{{ session.chemistryglory }}</span>
+            </div>
+            <p>Chemistry</p>
+        </div>
+
+        <div class="bar-wrapper">
+            <div class="bar math" style="height: {{ (session.mathsglory / 2000) * 100 }}%;">
+                <span class="glory-val">{{ session.mathsglory }}</span>
+            </div>
+            <p>Math</p>
+        </div>
+    </div>
+   </section>
+    </div>
+
+</body>
+</html>

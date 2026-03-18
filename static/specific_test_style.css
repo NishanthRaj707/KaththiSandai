@@ -1,0 +1,150 @@
+/* --- THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.accent { color: #C0392B; }
+
+/* --- TABLET CONTAINER --- */
+.selection-tablet {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.chamber-header { text-align: center; margin-bottom: 40px; }
+.main-title { font-family: 'Cinzel'; font-size: 2.2rem; letter-spacing: 4px; }
+.subtitle { color: #7f8c8d; font-size: 0.9rem; margin-top: 8px; }
+
+/* --- SECTIONS --- */
+.form-section { margin-bottom: 35px; }
+.section-label {
+    display: block;
+    font-family: 'Cinzel';
+    color: #D4AF37;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* 1. Subject Tiles (Grid) */
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+}
+.subject-grid input { display: none; }
+
+.subject-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.subject-tile span { font-size: 1.5rem; margin-bottom: 8px; }
+
+.subject-grid input:checked + .subject-tile {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* 2. Mode Selector (Pill Buttons) */
+.mode-selector { display: flex; gap: 10px; flex-wrap: wrap; }
+.mode-selector input { display: none; }
+
+.mode-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.mode-selector input:checked + .mode-btn {
+    background: #C0392B;
+    border-color: #C0392B;
+    color: white;
+}
+
+/* 3. Topic Input (The Manual Field) */
+.input-wrapper { position: relative; margin-top: 10px; }
+input[type="text"] {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #333;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-underline {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%;
+    height: 2px;
+    background: #C0392B;
+    transition: 0.5s ease;
+}
+
+input[type="text"]:focus + .input-underline { width: 100%; }
+small { color: #555; font-size: 0.75rem; margin-top: 8px; display: block; }
+
+/* 4. Generate Button */
+.generate-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #C0392B, #8e241a);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Cinzel';
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 10px;
+    box-shadow: 0 15px 30px rgba(192, 57, 43, 0.3);
+}
+
+.generate-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(192, 57, 43, 0.5);
+    letter-spacing: 2px;
+}
+
+/* Animation */
+.fade-in { animation: fadeInUp 0.8s ease-out; }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

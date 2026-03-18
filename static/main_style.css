@@ -1,0 +1,196 @@
+/* --- KATHI SANDAI CORE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.intro-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* --- THE BOMBASTIC VICTORY SWORDS --- */
+.sword-box {
+    position: relative;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+/* Base Blade Structure */
+.sword {
+    position: absolute;
+    width: 200px; /* Longer blade for more power */
+    height: 12px;
+    /* Metallic Shine Gradient */
+    background: linear-gradient(180deg, #7f8c8d 0%, #ffffff 50%, #7f8c8d 100%);
+    /* Tapered Point Shape */
+    clip-path: polygon(0% 15%, 82% 15%, 100% 50%, 82% 85%, 0% 85%);
+    top: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* The Fuller (Blood Groove) - The center line for depth */
+.sword::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 65%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
+}
+
+/* The Hilt (Crossguard, Grip, and Pommel) */
+.sword::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    width: 12px;
+    height: 42px;
+    /* Ancient Gold Gradient */
+    background: linear-gradient(135deg, #D4AF37 0%, #f1c40f 50%, #D4AF37 100%);
+    border-radius: 2px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Position Hilt and Add Pommels */
+.left-sword {
+    left: -250px;
+    transform: rotate(45deg);
+    animation: strike-left 1.2s cubic-bezier(0.17, 0.67, 0.2, 1) forwards;
+}
+
+.left-sword::before { 
+    left: 0; 
+    /* The circular pommel for the left sword */
+    box-shadow: -5px 0 0 #D4AF37, -6px 0 0 #000;
+}
+
+.right-sword {
+    right: -250px;
+    transform: rotate(-45deg);
+    animation: strike-right 1.2s cubic-bezier(0.17, 0.67, 0.2, 1) forwards;
+}
+
+.right-sword::before { 
+    right: 0; 
+    /* The circular pommel for the right sword */
+    box-shadow: 5px 0 0 #D4AF37, 6px 0 0 #000;
+}
+
+/* --- CLASH ANIMATIONS --- */
+@keyframes strike-left {
+    0% { left: -250px; opacity: 0; }
+    100% { left: 50%; transform: translate(-95%, -50%) rotate(405deg); opacity: 1; }
+}
+
+@keyframes strike-right {
+    0% { right: -250px; opacity: 0; }
+    100% { right: 50%; transform: translate(95%, -50%) rotate(-225deg); opacity: 1; }
+}
+
+/* Clash Flash Effect */
+.sword-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, #fff 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: clash-spark 0.3s ease 1.2s forwards;
+}
+
+@keyframes clash-spark {
+    0% { width: 0; height: 0; opacity: 1; }
+    100% { width: 120px; height: 120px; opacity: 0; }
+}
+
+/* --- TYPOGRAPHY & BUTTONS --- */
+.main-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    letter-spacing: 5px;
+    color: #f1f1f1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(192, 57, 43, 0.4);
+    opacity: 0;
+    animation: fadeIn 1s ease 1.4s forwards;
+}
+
+.accent { color: #C0392B; }
+
+.tagline {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.6s forwards;
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* --- LOGIN BUTTONS --- */
+.auth-container { opacity: 0; animation: fadeIn 1s ease 2s forwards; }
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.google-btn { background: #ffffff; color: #333; }
+.google-btn:hover { background: #f1f1f1; transform: translateY(-2px); }
+
+.divider {
+    margin: 20px 0;
+    position: relative;
+    border-top: 1px solid #333;
+}
+
+.divider span {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #121212;
+    padding: 0 10px;
+    font-size: 0.7rem;
+    color: #555;
+}
+
+
+
+.email-btn { background: #C0392B; color: white; }
+.email-btn:hover { 
+    background: #a93226; 
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4); 
+}

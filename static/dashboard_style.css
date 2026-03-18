@@ -1,0 +1,328 @@
+/* === CORE THEME (Matching Previous Page) === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+.accent { color: #C0392B; }
+.gold { color: #D4AF37; }
+
+/* === MAIN DASHBOARD STYLES === */
+.dashboard-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* Slight blur initially so BAVA pops out more */
+    filter: blur(3px);
+    animation: unblur 1s ease 11s forwards;
+}
+@keyframes unblur { to { filter: blur(0); } }
+
+/* Header Nav */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold line */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #bdc3c7;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-link:hover {
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+}
+.emoji { font-size: 1.2rem; }
+
+.mini-logo { font-family: 'Cinzel'; font-weight: bold; color: #C0392B; letter-spacing: 2px;}
+.mini-logo span{font-family: 'Cinzel'; font-weight: bold; color: #ffffff; letter-spacing: 2px;}
+
+/* Main Content */
+.dash-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.welcome-text h2 { font-family: 'Cinzel'; font-size: 2rem; }
+.welcome-text p { color: #7f8c8d; margin-top: 10px;}
+
+/* The Big Button */
+.action-container { position: relative; }
+.start-battle-btn {
+    position: relative;
+    padding: 20px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #C0392B, #962d22);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(192, 57, 43, 0.4);
+    z-index: 2;
+}
+
+.start-battle-btn:hover {
+    transform: scale(1.05);
+    letter-spacing: 2px;
+    box-shadow: 0 15px 35px rgba(192, 57, 43, 0.6);
+}
+
+/* Button Glow Effect */
+.btn-glow {
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: rotateGlow 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+@keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); }}
+
+.quick-stats {
+    display: flex; gap: 20px; color: #7f8c8d; font-size: 0.9rem;
+    background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 20px;
+}
+
+/* =========================================
+   === BAVA GUIDE OVERLAY & ANIMATION ===
+   ========================================= */
+
+/* The container that covers the screen */
+.bava-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(18, 18, 18, 0.85); /* Transparent dark BG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    /* The entire overlay sequence: Appears, stays for 11s, then vanishes */
+    animation: overlaySequence 12s ease forwards;
+}
+
+/* Guide layout container */
+.guide-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+}
+
+/* --- CSS-Only Warrior BAVA --- */
+.bava-character {
+    width: 100px; height: 120px;
+    position: relative;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+/* Floating animation for BAVA */
+.avatar-float { animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* The Red Plume (Mohawk) */
+.helmet-plume {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 20px; height: 40px;
+    background: #C0392B;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+}
+/* The Metal Helmet Base */
+.helmet-base {
+    position: absolute; bottom: 0;
+    width: 100px; height: 90px;
+    background: linear-gradient(135deg, #7f8c8d, #bdc3c7);
+    border-radius: 10px 10px 40px 40px; /* Shapes it like a jaw/helmet */
+    border: 2px solid #586465;
+}
+/* The Eye Slit */
+.eye-slit {
+    position: absolute; top: 25px; left: 10%;
+    width: 80%; height: 10px;
+    background: #121212;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #000;
+}
+/* Golden accents on helmet */
+.helmet-base::after {
+    content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
+    width: 90%; height: 10px; background: #D4AF37; border-radius: 5px;
+}
+
+/* --- Dialogue Box --- */
+.dialogue-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #D4AF37;
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    flex-grow: 1;
+    min-height: 120px;
+    position: relative;
+}
+
+.bava-name { color: #D4AF37; font-family: 'Cinzel'; margin-bottom: 10px; letter-spacing: 1px;}
+.speech-sequence { position: relative; height: 60px;}
+
+/* Common style for all speeches */
+.speech {
+    position: absolute; top: 0; left: 0;
+    font-size: 1.1rem; line-height: 1.5;
+    opacity: 0; /* Hidden by default */
+}
+
+/* --- THE GRAND SEQUENCE ANIMATION --- */
+
+/* 1. Overlay Sequence: Fade In -> Wait -> Fade Out & disable clicks */
+@keyframes overlaySequence {
+    0% { opacity: 0; }
+    10% { opacity: 1; } /* Appears quickly */
+    90% { opacity: 1; pointer-events: all;} /* Stays visible */
+    100% { opacity: 0; pointer-events: none; display: none;} /* Disappears */
+}
+
+/* 2. Speech Animations: Sequetial appearing */
+/* Speech 1 appears at 1s, goes at 4s */
+.s1 { animation: speechFade 3s ease 1s forwards; }
+/* Speech 2 appears at 5s, goes at 8s */
+.s2 { animation: speechFade 3s ease 5s forwards; }
+/* Speech 3 appears at 9s, goes at 12s */
+.s3 { animation: speechFade 3s ease 9s forwards; }
+
+/* The logic for one speech bubble */
+@keyframes speechFade {
+    0% { opacity: 0; transform: translateY(10px); }
+    10% { opacity: 1; transform: translateY(0); } /* Fade in fast */
+    80% { opacity: 1; transform: translateY(0); } /* Stay reading */
+    100% { opacity: 0; transform: translateY(-10px); } /* Fade out up */
+}
+:root {
+    --gold: #FFD700;
+    --deep-red: #8B0000;
+    --crimson: #DC143C;
+    --dark-bg: #0f0f0f;
+}
+
+.pro-cta-container {
+    padding: 10px;
+}
+
+.elite-unlock-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    width:400px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 2;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px var(--gold));
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.secondary-text {
+    font-family: 'Poppins', sans-serif;
+    color: #888;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- The Animation Effects --- */
+
+/* 1. Shimmer sweep effect */
+.btn-shimmer {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.7s;
+}
+
+.elite-unlock-btn:hover .btn-shimmer {
+    left: 150%;
+}
+
+/* 2. Hover Interactions */
+.elite-unlock-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: var(--gold);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.15), 0 0 10px rgba(220, 20, 60, 0.2);
+}
+
+.elite-unlock-btn:hover .primary-text {
+    text-shadow: 0 0 10px var(--gold);
+}
+
+.elite-unlock-btn:active {
+    transform: translateY(1px);
+}
+
+/* 3. Subtle background pulse */
+@keyframes buttonPulse {
+    0% { border-color: rgba(255, 215, 0, 0.3); }
+    50% { border-color: rgba(220, 20, 60, 0.6); }
+    100% { border-color: rgba(255, 215, 0, 0.3); }
+}
+
+.elite-unlock-btn {
+    animation: buttonPulse 3s infinite ease-in-out;
+}

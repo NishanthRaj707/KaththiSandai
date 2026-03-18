@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Battleground | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/specific_test_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="selection-tablet fade-in">
+        <header class="chamber-header">
+            <h1 class="main-title">WAR <span class="accent">STRATEGY</span></h1>
+            <p class="subtitle">Choose your battleground and sharpen your blade.</p>
+        </header>
+
+        <form class="strategy-form" action="/specific_test" method="POST">
+            
+            <div class="form-section">
+                <label class="section-label">1. Choose Your Weapon (Subject)</label>
+                <div class="subject-grid">
+                    <input type="radio" name="subject" value="physics" id="phys" required>
+                    <label for="phys" class="subject-tile"><span>⚛️</span> Physics</label>
+
+                    <input type="radio" name="subject" value="math" id="math">
+                    <label for="math" class="subject-tile"><span>📐</span> Maths</label>
+
+                    <input type="radio" name="subject" value="chemistry" id="chem">
+                    <label for="chem" class="subject-tile"><span>🧪</span> Chemistry</label>
+
+                    <input type="radio" name="subject" value="cs" id="cs">
+                    <label for="cs" class="subject-tile"><span>💻</span> CS</label>
+
+                    <input type="radio" name="subject" value="biology" id="bio">
+                    <label for="bio" class="subject-tile"><span>🧬</span> Biology</label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="section-label">2. Select Combat Intensity (Exam Type)</label>
+                <div class="mode-selector">
+                    <input type="radio" name="exam_type" value="board" id="board" required>
+                    <label for="board" class="mode-btn">Board Exam</label>
+
+                    <input type="radio" name="exam_type" value="jee" id="jee" disabled>
+                    <label for="jee" class="mode-btn">👑JEE Main/Adv</label>
+
+                    <input type="radio" name="exam_type" value="neet" id="neet" disabled>
+                    <label for="neet" class="mode-btn">👑NEET</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="section-label">3. Difficulty </label>
+                <div class="mode-selector">
+                    <input type="radio" name="Difficulty" value="Easy" id="Easy" required>
+                    <label for="Easy" class="mode-btn">Easy</label>
+
+                    <input type="radio" name="Difficulty" value="Medium" id="Medium" disabled>
+                    <label for="Medium" class="mode-btn">👑Medium</label>
+                    <input type="radio" name="Difficulty" value="Hard" id="Hard" disabled>
+                    <label for="Hard" class="mode-btn">👑Hard</label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="section-label" for="topic">4. Target Specific Chapters</label>
+                <div class="input-wrapper">
+                    <input type="text" id="topic" name="topic" placeholder="e.g. Thermodynamics or Integration..." required>
+                    <div class="input-underline"></div>
+                </div>
+                <small>BAVA will generate a custom test based on this topic.</small>
+            </div>
+
+            <button type="submit" class="generate-btn">
+                <span>GENERATE BATTLE ⚔️</span>
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
+<script>
+    var hard_button=document.querySelector("#Hard");
+    var medium_button=document.querySelector("#Medium");
+    var jee_button=document.querySelector("#jee");
+    var neet_button=document.querySelector("#neet");
+    const pro_status={{ session.get("is_pro")}};
+    if( pro_status){
+        hard_button.disabled=false;
+        medium_button.disabled=false;
+        jee_button.disabled=false;
+        neet_button.disabled=false;
+    }
+
+
+</script>

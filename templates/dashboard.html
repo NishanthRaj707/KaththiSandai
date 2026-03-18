@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaththi Sandai | Dashboard</title>
+    <link rel="stylesheet" href="static/dashboard_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header class="dash-header">
+            <a href="/profile" class="nav-link left-link">
+                <span class="emoji">👤</span> <span class="link-text">Warrior Profile</span>
+            </a>
+            
+            <div class="mini-logo">KATHTHI <span>SANDAI</span></div>
+
+            <a href="/leaderboard" class="nav-link right-link">
+                 <span class="link-text">Leaderboard</span> <span class="emoji">🏆</span>
+            </a>
+        </header>
+
+        <main class="dash-main">
+            <div class="welcome-text">
+                <h2>Welcome back, <span class="accent">Gladiator.</span></h2>
+                <p>Your blade is thirsty for knowledge.</p>
+            </div>
+
+            <div class="action-container">
+                <a href="/specific_test">
+                <button class="start-battle-btn">
+                    <span>⚔️ INITIATE BATTLE ⚔️</span>
+                    <div class="btn-glow"></div>
+                </button>
+                </a>
+            </div>
+            
+            <div class="quick-stats">
+                 <div class="stat-box">Current Rank: <span class="gold">{{session.rank}}</span></div>
+                 <div class="stat-box">Pakkoda Glory: <span class="gold">{{session.pakkodaglory}}</span></div>
+            </div>
+        </main>
+        <div class="pro-cta-container">
+    <a href="/billing" class="elite-unlock-btn">
+        <div class="btn-content">
+            <span class="btn-icon">👑</span>
+            <div class="btn-text">
+                <span class="primary-text">ASCEND TO PRO</span>
+                <span class="secondary-text">Unlock JEE/NEET Arenas</span>
+            </div>
+        </div>
+    </div>
+        
+        <div class="btn-shimmer"></div>
+    </a>
+</div>
+    <div class="bava-overlay">
+        <div class="guide-container">
+            <div class="bava-character avatar-float">
+                <div class="helmet-plume"></div>
+                <div class="helmet-base">
+                    <div class="eye-slit"></div>
+                </div>
+            </div>
+            
+            <div class="dialogue-box">
+                <h3 class="bava-name">BAVA (Guide)</h3>
+                <div class="speech-sequence">
+                    <p class="speech s1">Greetings, brave one! I am BAVA. I shall guide your path to glory in Kathi Sandai.</p>
+                    <p class="speech s2">Look above! There lies your <span class="gold">Profile</span> and the global <span class="gold">Leaderboard</span>.</p>
+                    <p class="speech s3">When your spirit is ready, strike the great center button to <span class="red">Initiate Battle!</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

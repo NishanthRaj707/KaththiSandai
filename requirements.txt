@@ -1,0 +1,23 @@
+# --- Web Framework ---
+Flask==3.0.3
+python-dotenv==1.0.1
+dateutil
+
+# --- AI & LLM Orchestration ---
+langchain==0.3.0
+langchain-google-genai==2.0.0
+
+
+# --- Data & API Utilities ---
+pydantic==2.9.1
+requests==2.32.3
+
+# --- Database & Auth (Supabase Integration) ---
+supabase==2.7.4
+flask_sqlalchemy
+werkzeug
+hmac
+
+# --- Server (For local testing before PythonAnywhere)
+gunicorn==23.0.0
+google-auth

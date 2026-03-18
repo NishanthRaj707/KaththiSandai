@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | Hall of Heroes</title>
+    <link rel="stylesheet" href="static/leaderboard_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="leaderboard-wrapper">
+        <a href="/dashboard" class="back-link">← Back to Training Ground</a>
+
+        <header class="hero-header">
+            <h1 class="main-title">HALL OF <span class="accent">HEROES</span></h1>
+            <p class="subtitle">Only the bravest claim the Pakkoda Throne</p>
+        </header>
+
+        <form class="filter-row">
+            <div class="filter-group">
+                <select id="subject-filter" name="subject-filter">
+                    <option value="overall">Pakkoda Glory</option>
+                    <option value="physics_glory">Physics Glory</option>
+                    <option value="maths_glory">Math Glory</option>
+                    <option value="chemistry_glory">Chemistry Glory</option>
+                </select>
+                
+            </div>
+            <button type="submit" class="apply-btn">Apply Filter</button>
+        </form>
+
+        <main class="ranking-container">
+            <div class="rank-item gold-tier">
+                <div class="rank-number">1</div>
+                <div class="user-info">
+                    <span class="warrior-name">{{first.username}}<span>👑</span></span>
+                    <span class="warrior-title">{{first.rank}}</span>
+                </div>
+                <div class="glory-score">{{first.pakkoda_glory}}<span class="unit">PG</span></div>
+            </div>
+            {% if second %}
+            <div class="rank-item silver-tier">
+                <div class="rank-number">2</div>
+                <div class="user-info">
+                    <span class="warrior-name">{{second.username}}<span>⚔️</span></span>
+                    <span class="warrior-title">{{second.rank}}</span>
+                </div>
+                <div class="glory-score">{{second.pakkoda_glory}}<span class="unit">PG</span></div>
+            </div>
+            {% endif %}
+            {% if third %}
+            <div class="rank-item bronze-tier">
+                <div class="rank-number">3</div>
+                <div class="user-info">
+                    <span class="warrior-name">{{third.username}}<span>🛡️</span></span>
+                    <span class="warrior-title">{{third.rank}}</span>
+                </div>
+                <div class="glory-score">{{third.pakkoda_glory}}<span class="unit">PG</span></div>
+            </div>
+            {% endif %}
+            {% if other %}
+            {% for other in others %}
+            <div class="rank-item">
+                <div class="rank-number">4</div>
+                <div class="user-info">
+                    <span class="warrior-name">{{other.username}}</span>
+                    <span class="warrior-title">{{other.rank}}</span>
+                </div>
+                <div class="glory-score">{{other.pakkoda_glory}}<span class="unit">PG</span></div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            </main>
+             
+        <footer class="sticky-user-rank">
+            <div class="rank-number">{{myrank}}</div>
+            <div class="user-info">
+                <span class="warrior-name">You ({{my.username}})</span>
+                <span class="warrior-title">{{my.rank}}</span>
+            </div>
+            <div class="glory-score">{{my.pakkoda_glory}}<span class="unit">PG</span></div>
+        </footer>
+    </div>
+
+</body>
+</html>

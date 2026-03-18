@@ -1,0 +1,134 @@
+/* --- UNIVERSAL THEME --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.accent { color: #C0392B; }
+.gold-text { color: #D4AF37; font-weight: bold; }
+
+/* --- PROFILE TABLET --- */
+.profile-tablet {
+    background: linear-gradient(145deg, #1c1c1c, #161616);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+.back-link:hover { color: #C0392B; }
+
+/* Header & Avatar */
+.profile-header { text-align: center; margin-top: 10px; }
+.avatar-circle {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #C0392B, #962d22);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
+}
+.avatar-circle .initial { font-family: 'Cinzel'; font-size: 2rem; font-weight: bold; }
+.username { font-family: 'Cinzel'; letter-spacing: 2px; margin-bottom: 5px; }
+.rank-badge { font-size: 0.85rem; letter-spacing: 1px; background: rgba(0,0,0,0.3); display: inline-block; padding: 5px 15px; border-radius: 20px; }
+
+/* Pakkoda Points Section */
+.pakkoda-score-section { text-align: center; margin: 30px 0; }
+.score-label { font-size: 0.7rem; color: #7f8c8d; letter-spacing: 2px; }
+.pakkoda-points { font-family: 'Cinzel'; font-size: 3rem; color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+.divider { border: 0; border-top: 1px solid #333; margin: 20px 0; }
+
+/* Stats Grid */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px; }
+.subject-card { background: rgba(255,255,255,0.03); padding: 15px 10px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+.subject-card h3 { font-size: 0.7rem; color: #bdc3c7; margin: 5px 0; }
+.glory-count { font-weight: bold; font-size: 0.9rem; }
+.glory-count .label { font-size: 0.6rem; color: #7f8c8d; display: block; }
+
+.progress-bar { width: 100%; height: 4px; background: #222; border-radius: 2px; margin-top: 10px; overflow: hidden; }
+.fill { height: 100%; transition: 1s ease-out; }
+.physics .fill { background: #3498db; box-shadow: 0 0 5px #3498db; }
+.chemistry .fill { background: #2ecc71; box-shadow: 0 0 5px #2ecc71; }
+.math .fill { background: #e67e22; box-shadow: 0 0 5px #e67e22; }
+
+/* Visualization (The Pure CSS Bar Chart) */
+.visualization {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.bar-chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Keeps bars on the floor */
+    height: 200px; /* Fixed height for the arena */
+    padding-top: 30px;
+    margin-top: 20px;
+    border-bottom: 2px solid #555;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    height: 100%;
+}
+
+.bar {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    transition: height 1s ease-out; /* Makes the bar "grow" when page loads */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Dynamic Colors */
+.physics { background: linear-gradient(to top, #1e3a8a, #3b82f6); box-shadow: 0 0 10px #3b82f6; }
+.chemistry { background: linear-gradient(to top, #166534, #22c55e); box-shadow: 0 0 10px #22c55e; }
+.math { background: linear-gradient(to top, #991b1b, #ef4444); box-shadow: 0 0 10px #ef4444; }
+
+.glory-val {
+    position: absolute;
+    top: -25px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.bar-wrapper p {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 0.9rem;
+    font-family: 'Cinzel', serif; /* Or any heroic font */
+}
+/* --- ANIMATIONS --- */
+.fade-in { animation: fadeInScale 0.8s ease-out forwards; }
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

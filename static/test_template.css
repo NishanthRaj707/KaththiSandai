@@ -1,0 +1,171 @@
+/* --- CORE THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212; /* Pale charcoal background */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- ARENA LAYOUT --- */
+.combat-arena {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    background: #C0392B; /* Warrior Red */
+    box-shadow: 0 0 10px #C0392B;
+    transition: width 0.4s ease;
+}
+
+/* --- THE VOID-BLACK HUB --- */
+.combat-hub {
+    background: #0a0a0a; /* Dark black box */
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+/* Subject Badge */
+.subject-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(192, 57, 43, 0.1);
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(192, 57, 43, 0.3);
+    margin-bottom: 25px;
+}
+.subject-name {
+    font-family: 'Cinzel';
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: #C0392B;
+}
+
+/* Question Styling */
+.question-container { margin-bottom: 35px; }
+.question-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #f1f1f1;
+}
+
+/* Options Grid */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hidden-radio { display: none; }
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 18px 25px;
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 1rem;
+}
+
+.prefix {
+    font-family: 'Cinzel';
+    color: #555;
+    margin-right: 20px;
+    font-weight: bold;
+    border-right: 1px solid #333;
+    padding-right: 15px;
+}
+
+.option-label:hover {
+    background: #1c1c1c;
+    border-color: #C0392B;
+    transform: translateX(5px);
+}
+
+.hidden-radio:checked + .option-label {
+    background: rgba(192, 57, 43, 0.05);
+    border-color: #C0392B;
+    box-shadow: 0 0 15px rgba(192, 57, 43, 0.2);
+}
+
+.hidden-radio:checked + .option-label .prefix {
+    color: #C0392B;
+}
+
+/* Footer Section */
+.combat-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #1a1a1a;
+}
+
+.explanation{
+    background:#c68e07;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-family: 'Cinzel';
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.explanation:hover{
+    background:#efbf04;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4); 
+}
+
+.next-btn {
+    background: #C0392B;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-family: 'Cinzel';
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-btn:hover {
+    background: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
+}
+
+/* Entry Animation */
+.fade-in { animation: arenaEntry 0.6s ease-out; }
+@keyframes arenaEntry {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

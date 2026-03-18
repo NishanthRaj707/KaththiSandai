@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge Your Identity | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/enrollment_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="enroll-container fade-in">
+        <header class="enroll-header">
+            <h1 class="main-title">FORGE YOUR <span class="accent">IDENTITY</span></h1>
+            <p class="subtitle">Enter your details to join the ranks of Pakkoda Warriors</p>
+        </header>
+
+        <form class="enroll-form"  method="POST">
+            <div class="input-group">
+                <label for="username">Warrior Name</label>
+                <input type="text" id="username" name="username" placeholder="e.g. Leonidas_25" required>
+                <small>This name will appear on the Leaderboard 🏆</small>
+                {% if existsuser %}
+                <p class="subtitleexception">User Name already exists</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" placeholder="e.g. secret123" required>
+            </div>
+            <div class="input-group">
+                <label>Current Grade (Class)</label>
+                <div class="grade-selector">
+                    <input type="radio" id="grade10" name="grade" value="10" required>
+                    <label for="grade10" class="grade-shield">10th</label>
+
+                    <input type="radio" id="grade11" name="grade" value="11">
+                    <label for="grade11" class="grade-shield">11th</label>
+
+                    <input type="radio" id="grade12" name="grade" value="12">
+                    <label for="grade12" class="grade-shield">12th</label>
+
+                    <input type="radio" id="gradeOther" name="grade" value="other">
+                    <label for="gradeOther" class="grade-shield">Other</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="specialty">Primary Specialty</label>
+                <select id="specialty" name="specialty">
+                    <option value="physics">Physics (Matter & Force)</option>
+                    <option value="chemistry">Chemistry (Elements & Bonds)</option>
+                    <option value="math">Mathematics (Logic & Numbers)</option>
+                    <option value="all">All-Rounder</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>SEAL MY FATE ⚔️</span>
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

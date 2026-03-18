@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combat Session | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/test_template.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="combat-arena">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 30%;"></div>
+        </div>
+
+        <main class="combat-hub fade-in">
+            <div class="subject-badge">
+                <span class="emoji">⚛️</span> <span class="subject-name">PHYSICS BATTLE</span>
+            </div>
+
+            <section class="question-container">
+                <h2 class="question-text">
+                    What is the dimensional formula for the Universal Gravitational Constant (G)?
+                </h2>
+            </section>
+
+            <section class="options-grid">
+                <div class="option-card">
+                    <input type="radio" name="answer" id="opt1" class="hidden-radio">
+                    <label for="opt1" class="option-label">
+                        <span class="prefix">A</span> [M¹ L³ T⁻²]
+                    </label>
+                </div>
+
+                <div class="option-card">
+                    <input type="radio" name="answer" id="opt2" class="hidden-radio">
+                    <label for="opt2" class="option-label">
+                        <span class="prefix">B</span> [M⁻¹ L³ T⁻²]
+                    </label>
+                </div>
+
+                <div class="option-card">
+                    <input type="radio" name="answer" id="opt3" class="hidden-radio">
+                    <label for="opt3" class="option-label">
+                        <span class="prefix">C</span> [M⁻¹ L² T⁻²]
+                    </label>
+                </div>
+
+                <div class="option-card">
+                    <input type="radio" name="answer" id="opt4" class="hidden-radio">
+                    <label for="opt4" class="option-label">
+                        <span class="prefix">D</span> [M¹ L² T⁻¹]
+                    </label>
+                </div>
+            </section>
+            <footer class="combat-footer">
+                <button class="explanation" disabled>Explanation</button>
+                <button class="next-btn">NEXT STRIKE →</button>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
+<script>
+    // 1. Safe Data Injection - Flask will replace this with a real JS Array
+    const questions = {{ session.get('current_questions') | tojson | safe }} || [];
+    
+    // Debugging: Right-click page -> Inspect -> Console to see if this is empty
+    console.log("Battle Scrolls Loaded:", questions);
+
+    // Ensure ispro is a boolean (true/false) not a string
+    const ispro = {{ 'true' if session.get('is_pro') else 'false' }};
+    
+    let currentIdx = 0;
+    let selectedAnswers = {};
+    let correctAnswers = {};
+    let isAnswered = false;
+
+    // Element Selectors
+    const questionText = document.querySelector('.question-text');
+    const optionsGrid = document.querySelector('.options-grid');
+    const progressBar = document.querySelector('.progress-bar');
+    const nextBtn = document.querySelector('.next-btn');
+    const explanationBtn = document.querySelector('.explanation');
+
+    function renderQuestion() {
+        if (questions.length === 0) {
+            questionText.innerText = "No questions found in the scrolls.";
+            return;
+        }
+
+        const q = questions[currentIdx];
+        isAnswered = false;
+        
+        // Update Progress
+        const progress = ((currentIdx + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+
+        // Update Text
+        questionText.innerText = q.question;
+        
+        // Pro Logic for Explanation Button
+        explanationBtn.disabled = true;
+        explanationBtn.style.opacity = "0.3";
+    
+        if (currentIdx === questions.length - 1) {
+            nextBtn.innerText = "FINISH BATTLE 🏆";
+        }
+
+        optionsGrid.innerHTML = '';
+        const prefixes = ['A', 'B', 'C', 'D'];
+        
+        q.options.forEach((opt, index) => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            card.innerHTML = `
+                <input type="radio" name="answer" id="opt${index}" class="hidden-radio" value="${opt}">
+                <label for="opt${index}" class="option-label" onclick="handleStrike('${opt.replace(/'/g, "\\'")}', ${index})">
+                    <span class="prefix">${prefixes[index]}</span> ${opt}
+                </label>
+            `;
+            optionsGrid.appendChild(card);
+        });
+    }
+
+    window.handleStrike = function(selectedVal, index) {
+        if (isAnswered) return;
+        isAnswered = true;
+        
+        const q = questions[currentIdx];
+        const allLabels = document.querySelectorAll('.option-label');
+
+        selectedAnswers[currentIdx] = selectedVal;
+        // ⚔️ CRITICAL FIX: Matching the key 'correctanswer' from your JSON
+        correctAnswers[currentIdx] = q.correctanswer;
+
+        allLabels.forEach(label => {
+            const radioValue = label.previousElementSibling.value;
+            label.style.pointerEvents = 'none';
+
+            if (radioValue === q.correctanswer) {
+                label.style.background = "rgba(34, 197, 94, 0.2)";
+                label.style.border = "1px solid #22c55e";
+            } else if (radioValue === selectedVal) {
+                label.style.background = "rgba(239, 68, 68, 0.2)";
+                label.style.border = "1px solid #ef4444";
+            } else {
+                label.style.opacity = "0.4";
+            }
+        });
+
+        // Explanation Logic
+        if (ispro) {
+            explanationBtn.disabled = false;
+            explanationBtn.style.opacity = "1";
+            explanationBtn.onclick = () => alert(`BAVA'S WISDOM: ${q.explanation}`);
+        } else {
+            explanationBtn.onclick = () => alert("Upgrade to PRO to unlock Explanations!");
+            explanationBtn.style.opacity = "0.5";
+            explanationBtn.disabled = false; // Let them click it to see the "Upgrade" message
+        }
+    };
+
+    nextBtn.addEventListener('click', () => {
+        if (!isAnswered) {
+            alert("Warrior! You must choose your strike!");
+            return;
+        }
+
+        if (currentIdx < questions.length - 1) {
+            currentIdx++;
+            renderQuestion();
+        } else {
+            finalizeBattle();
+        }
+    });
+
+    function finalizeBattle() {
+        nextBtn.innerText = "CALCULATING GLORY...";
+        nextBtn.disabled = true;
+
+        fetch('/submit-battle', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                canswers: correctAnswers,
+                answers: selectedAnswers,
+                subject: "{{ session.get('test_subject', 'General') }}"
+            })
+        })
+        .then(res => res.json())
+        .then(data => { window.location.href = "/result"; })
+        .catch(err => { console.error("Forge Error:", err); });
+    }
+
+    // Initial Strike
+    document.addEventListener("DOMContentLoaded", renderQuestion);
+</script>

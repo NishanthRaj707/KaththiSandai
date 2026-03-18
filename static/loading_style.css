@@ -1,0 +1,159 @@
+/* --- THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #0a0a0a; /* Darker than usual for higher contrast */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.accent { color: #C0392B; }
+
+/* --- FORGE CONTAINER --- */
+.forge-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* --- THE SPINNING SWORD --- */
+.sword-wrapper {
+    margin-bottom: 100px;
+    perspective: 1000px;
+}
+
+.spinning-sword {
+    position: relative;
+    width: 200px;
+    height: 20px;
+    margin: 0 auto;
+    /* Rotation + X-axis oscillation */
+    animation: swordFlight 2.5s infinite linear;
+    transform-origin: center;
+}
+
+/* Blade Shape */
+.blade {
+    position: absolute;
+    width: 150px;
+    height: 10px;
+    background: linear-gradient(180deg, #D4AF37 0%, #f1c40f 50%, #D4AF37 100%);
+    clip-path: polygon(0% 20%, 85% 20%, 100% 50%, 85% 80%, 0% 80%);
+    left: 40px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Crossguard */
+.crossguard {
+    position: absolute;
+    width: 8px;
+    height: 35px;
+    background: #7d6608;
+    left: 40px;
+    top: -12px;
+    border-radius: 2px;
+}
+
+/* Wood-Textured Hilt */
+.hilt {
+    position: absolute;
+    width: 35px;
+    height: 8px;
+    background: #5d4037; /* Wooden Brown */
+    left: 5px;
+    top: 1px;
+    border-radius: 2px;
+    /* Wood Grain Effect */
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0,0,0,0.2) 5px, rgba(0,0,0,0.2) 10px);
+}
+
+/* Golden Pommel */
+.pommel {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #D4AF37;
+    border-radius: 50%;
+    left: -5px;
+    top: -1px;
+}
+
+/* --- SWORD ANIMATION --- */
+@keyframes swordFlight {
+    0% {
+        transform: translateX(-30px) rotate(0deg);
+    }
+    50% {
+        transform: translateX(30px) rotate(180deg);
+    }
+    100% {
+        transform: translateX(-30px) rotate(360deg);
+    }
+}
+
+/* --- TYPOGRAPHY & LOADING BAR --- */
+.forge-text {
+    font-family: 'Cinzel';
+    letter-spacing: 4px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.bava-tip {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.loading-bar-track {
+    width: 250px;
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loading-bar-fill {
+    width: 100%;
+    height: 100%;
+    background: #C0392B;
+    animation: fillLoop 3s ease-in-out infinite;
+    transform-origin: left;
+}
+
+@keyframes fillLoop {
+    0% { transform: scaleX(0); }
+    50% { transform: scaleX(1); }
+    100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* --- EMBER PARTICLES --- */
+.ember {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #C0392B;
+    border-radius: 50%;
+    filter: blur(1px);
+    opacity: 0;
+    animation: floatEmber 4s infinite linear;
+}
+
+.ember:nth-child(1) { left: 10%; animation-delay: 0s; }
+.ember:nth-child(2) { left: 30%; animation-delay: 1s; }
+.ember:nth-child(3) { left: 50%; animation-delay: 2s; }
+.ember:nth-child(4) { left: 70%; animation-delay: 0.5s; }
+.ember:nth-child(5) { left: 90%; animation-delay: 1.5s; }
+
+@keyframes floatEmber {
+    0% { transform: translateY(100vh) rotate(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}

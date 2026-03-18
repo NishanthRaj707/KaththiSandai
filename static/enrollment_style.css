@@ -1,0 +1,111 @@
+/* --- CORE THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.accent { color: #C0392B; }
+
+/* --- ENROLL CONTAINER --- */
+.enroll-container {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.enroll-header { text-align: center; margin-bottom: 30px; }
+.main-title { font-family: 'Cinzel'; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 5px; }
+.subtitle { color: #7f8c8d; font-size: 0.85rem; }
+
+.subtitleexception { color: #ff0000; font-size: 0.95rem; }
+
+/* --- FORM ELEMENTS --- */
+.enroll-form { display: flex; flex-direction: column; gap: 25px; }
+
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-group label { font-family: 'Cinzel'; font-size: 0.8rem; color: #D4AF37; letter-spacing: 1px; }
+
+/* Text & Select Inputs */
+input[type="text"], select {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Poppins';
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #C0392B;
+    box-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
+}
+
+small { color: #555; font-size: 0.7rem; }
+
+/* Grade Shield Selector */
+.grade-selector { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.grade-selector input[type="radio"] { display: none; }
+
+.grade-shield {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.grade-selector input[type="radio"]:checked + .grade-shield {
+    background: #C0392B;
+    border-color: #D4AF37;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
+}
+
+/* Submit Button */
+.submit-btn {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #D4AF37, #b8952e);
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Cinzel';
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.submit-btn:hover {
+    background: #C0392B;
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(192, 57, 43, 0.3);
+}
+
+/* Animations */
+.fade-in { animation: slideUp 0.8s ease-out forwards; }
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}

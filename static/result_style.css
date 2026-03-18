@@ -1,0 +1,151 @@
+/* --- THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.gold { color: #D4AF37; }
+
+/* --- THE TABLET --- */
+.result-tablet {
+    background: #0a0a0a;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+/* Victory Hero Area */
+.victory-hero { margin-bottom: 30px; }
+.victory-hero img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+    margin-bottom: 15px;
+}
+.battle-status {
+    font-family: 'Cinzel';
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: #D4AF37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Accuracy Stats */
+.accuracy-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.stat-box {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+}
+.stat-box .val {
+    display: block;
+    font-family: 'Cinzel';
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.correct .val { color: #2ecc71; }
+.incorrect .val { color: #e74c3c; }
+.stat-box .lbl {
+    font-size: 0.7rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.divider { border: 0; border-top: 1px solid #1a1a1a; margin: 20px 0; }
+
+/* Glory List */
+.section-title {
+    font-family: 'Cinzel';
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+.glory-list { display: flex; flex-direction: column; gap: 10px; }
+.glory-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #bdc3c7;
+}
+.total {
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px dashed #333;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Pakkoda Update Section */
+.pakkoda-pulse {
+    background: linear-gradient(145deg, #121212, #000);
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #C0392B;
+}
+.pulse-header {
+    font-size: 0.7rem;
+    color: #7f8c8d;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+.pulse-main {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 15px;
+}
+.current-pakkoda {
+    font-family: 'Cinzel';
+    font-size: 2rem;
+    font-weight: bold;
+}
+.trend { font-size: 0.8rem; font-weight: bold; }
+.rise { color: #2ecc71; }
+.fall { color: #e74c3c; }
+
+/* Actions */
+.result-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.btn {
+    flex: 1;
+    padding: 15px;
+    text-decoration: none;
+    font-family: 'Cinzel';
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.primary { background: #C0392B; color: #fff; }
+.secondary { background: #1a1a1a; color: #D4AF37; border: 1px solid #333; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+
+/* Animation */
+.fade-in { animation: resultEntry 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+@keyframes resultEntry {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forging Your Battle... | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/loading_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="forge-container">
+        <div class="embers">
+            <div class="ember"></div>
+            <div class="ember"></div>
+            <div class="ember"></div>
+            <div class="ember"></div>
+            <div class="ember"></div>
+        </div>
+
+        <div class="loading-content">
+            <div class="sword-wrapper">
+                <div class="spinning-sword">
+                    <div class="blade"></div>
+                    <div class="crossguard"></div>
+                    <div class="hilt"></div>
+                    <div class="pommel"></div>
+                </div>
+            </div>
+
+            <div class="text-area">
+                <h2 class="forge-text">FORGING YOUR <span class="accent">BATTLE</span></h2>
+                <p class="bava-tip">"Patience, Warrior. BAVA is preparing the questions from the ancient scrolls..."</p>
+                
+                <div class="loading-bar-track">
+                    <div class="loading-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Get the settings (you can pass these via session or URL params)
+    const battleData = {
+        subject: "{{ session.get('test_subject') }}",
+        grade: "{{ session.get('grade') }}",
+        exam_type:"{{ session.get('test_exam_type')}}",
+        difficulty:"{{'test_difficulty'}}",
+        topic:"{{'test_topic'}}"
+    };
+
+    // 2. Start the "Forge" (The AJAX call)
+    fetch("/generate-battle-api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(battleData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            // 3. Move to the Arena
+            window.location.href = data.redirect;
+        } else {
+            alert("The forge has cooled. Please try again.");
+            window.location.href = "/dashboard";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        window.location.href = "/dashboard";
+    });
+});
+</script>

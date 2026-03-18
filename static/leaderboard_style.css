@@ -1,0 +1,130 @@
+/* --- THEME SYNC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 100px; /* Space for sticky bar */
+}
+
+.leaderboard-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+.back-link:hover { color: #C0392B; }
+
+/* Header Styling */
+.hero-header { text-align: center; margin: 30px 0; }
+.main-title { font-family: 'Cinzel'; font-size: 2.5rem; letter-spacing: 3px; }
+.accent { color: #C0392B; }
+.subtitle { font-size: 0.8rem; color: #7f8c8d; text-transform: uppercase; margin-top: 5px; }
+
+/* Filter Section */
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.filter-group select {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-size: 0.85rem;
+    margin-right: 5px;
+    outline: none;
+}
+
+.apply-btn {
+    background: #D4AF37;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.apply-btn:hover { background: #f1c40f; transform: scale(1.05); }
+
+/* Ranking List */
+.ranking-container { display: flex; flex-direction: column; gap: 12px; }
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.rank-number {
+    font-family: 'Cinzel';
+    font-size: 1.5rem;
+    width: 50px;
+    font-weight: bold;
+}
+
+.user-info { flex-grow: 1; }
+.warrior-name { display: block; font-weight: 600; font-size: 1rem; }
+.warrior-title { font-size: 0.75rem; color: #7f8c8d; text-transform: uppercase; }
+
+.glory-score { font-family: 'Cinzel'; color: #D4AF37; font-weight: bold; font-size: 1.1rem; }
+.unit { font-size: 0.6rem; color: #7f8c8d; }
+
+/* Top 3 Tiers */
+.gold-tier { 
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(0,0,0,0)); 
+    border-left: 4px solid #D4AF37;
+}
+.gold-tier .rank-number { color: #D4AF37; }
+
+.silver-tier { 
+    background: linear-gradient(90deg, rgba(189, 195, 199, 0.15), rgba(0,0,0,0)); 
+    border-left: 4px solid #BDC3C7;
+}
+.silver-tier .rank-number { color: #BDC3C7; }
+
+.bronze-tier { 
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.15), rgba(0,0,0,0)); 
+    border-left: 4px solid #CD7F32;
+}
+.bronze-tier .rank-number { color: #CD7F32; }
+
+/* Sticky User Bar */
+.sticky-user-rank {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    background: #C0392B; /* Warrior Red to stand out */
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    border-radius: 15px 15px 0 0;
+    z-index: 100;
+}
+.sticky-user-rank .warrior-title { color: #f1f1f1; }
+.sticky-user-rank .glory-score { color: #fff; }

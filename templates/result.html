@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Report | Kathi Sandai</title>
+    <link rel="stylesheet" href="static/result_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="result-wrapper">
+        <main class="result-tablet fade-in">
+            <div class="victory-hero">
+                
+                <h1 class="battle-status">VICTORY DECLARED</h1>
+            </div>
+
+            <div class="accuracy-row">
+                <div class="stat-box correct">
+                    <span class="val">{{ session.nocorrect }}</span>
+                    <span class="lbl">Strikes Landed</span>
+                </div>
+                <div class="stat-box incorrect">
+                    <span class="val">{{ session.nowrong }}</span>
+                    <span class="lbl">Blocked/Missed</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="glory-breakdown">
+                <h3 class="section-title">THE SPOILS OF WAR</h3>
+                <div class="glory-list">
+                    <div class="glory-item total">
+                        <span>🏆 Total Session Glory</span>
+                        <span class="gold">{{ session.test_result }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="pakkoda-pulse">
+                <div class="pulse-header">
+                    <span class="emoji">🥟</span> PAKKODA GLORY UPDATE
+                </div>
+                <div class="pulse-main">
+                    <div class="current-pakkoda">{{ session.pakkodaglory }}</div>
+                </div>
+            </section>
+
+            <footer class="result-footer">
+                <a href="/specific_test" class="btn secondary">New Battle</a>
+                <a href="/dashboard" class="btn primary">Return to Camp</a>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
